@@ -62,7 +62,7 @@ router.get('/' , async (req, res) =>{
         });
 
         if (!response) {
-            return res.status(404).json({ error: 'Person not found' });
+            return res.status(404).json({ error: 'Menuitem not found' });
         }
 
         console.log('data updated');
@@ -80,11 +80,11 @@ router.delete('/:id', async (req, res) => {
       // Assuming you have a Person model
       const response = await Menuitem.findByIdAndRemove(MenuId);
       if (!response) {
-          return res.status(404).json({ error: 'Person not found' });
+          return res.status(404).json({ error: 'Menuiteam not found' });
       }
 
       console.log('data deleted');
-      res.status(200).json({ message: 'Person deleted successfully' });
+      res.status(200).json({ message: 'Menu deleted successfully' });
   } catch (err) {
       console.log(err);
       res.status(500).json({ error: 'Internal Server Error' });
