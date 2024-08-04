@@ -1,7 +1,13 @@
 const mongoose = require('mongoose'); //its work like a bridge btw nodejs and mongdb database
+require('dotenv').config(); 
 
 //define mongoose connection url with file namme Zspire if not availabe than create automatically 
-const MongoUrl = 'mongodb://localhost:27017/Zspire'
+// const MongoUrl = 'mongodb://localhost:27017/Zspire'
+// const MongoUrl = 'mongodb+srv://santosh:santosh0405@cluster0.wldwdxc.mongodb.net/'
+
+// its connection locally and globally
+// const MongoUrl = process.env.MONGODB_URL_LOCAL
+const MongoUrl = process.env.MONGODB_URL
 
 //set up mongoose connection it's is fixed connection
 mongoose.connect(MongoUrl, { 
