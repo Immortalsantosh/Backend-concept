@@ -11,8 +11,8 @@ const MongoUrl = process.env.MONGODB_URL
 
 // set up mongoose connection it's is fixed connection
 mongoose.connect(MongoUrl, { 
-    useNewUrlParser: true, 
-    useUnifiedTopology: true 
+    // useNewUrlParser: true, 
+    // useUnifiedTopology: true 
 
 }) 
 
