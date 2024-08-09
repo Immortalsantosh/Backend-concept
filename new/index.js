@@ -4,6 +4,17 @@ const app = express();
 const db = require('./db')  // impport or connection with index.js
 require('dotenv').config();        // here config the dotenv folder 
 
+const bodyParser = require('body-parser') // use for data converted 
+app.use(bodyParser.json()) 
+const PORT = process.env.PORT || 3000 
+
+// middleware  function
+const logRequest = (req,res,next)=>{
+console.log(`[${new Date().toLocaleString()}] request made to " ${req.originalUrl}"`)
+next();
+}
+app.use(logRequest)
+
 app.get('/' , function (req,res){
 res.send("welcome to my hotel")
 })
@@ -11,11 +22,7 @@ res.send("welcome to my hotel")
 
 
 //bodyparser.json() which is store in req.body
-const bodyParser = require('body-parser') // use for data converted 
-app.use(bodyParser.json()) 
 
-
-const PORT = process.env.PORT || 3000
 
 // import the personRoutes
 const personRoutes = require('./routes/personRoutes')

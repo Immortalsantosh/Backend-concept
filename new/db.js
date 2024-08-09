@@ -5,8 +5,8 @@ require('dotenv').config();
 
 
 // its connection locally and globally
-// const MongoUrl = process.env.MONGODB_URL_LOCAL
-const MongoUrl = process.env.MONGODB_URL 
+ const MongoUrl = process.env.MONGODB_URL_LOCAL
+// const MongoUrl = process.env.MONGODB_URL 
 
 
 // set up mongoose connection it's is fixed connection
