@@ -2,8 +2,14 @@ const express = require('express')
 const app = express();
 
 const db = require('./db')  // impport or connection with index.js
-require('dotenv').config();        // here config the dotenv folder 
+require('dotenv').config(); // here config the dotenv folder 
 
+//auth import
+const passport= require('./auth') 
+const LocalStrategy = require('passport-local').Strategy;      
+
+
+//bodyparser.json() which is store in req.body
 const bodyParser = require('body-parser') // use for data converted 
 app.use(bodyParser.json()) 
 const PORT = process.env.PORT || 3000 
@@ -15,13 +21,17 @@ next();
 }
 app.use(logRequest)
 
+//password initionaton and authemtication
+app.use(passport.initialize());
+const localAuthMiddleware = passport.authenticate('local', { session: false });
+
 app.get('/' , function (req,res){
 res.send("welcome to my hotel")
 })
 
 
 
-//bodyparser.json() which is store in req.body
+
 
 
 // import the personRoutes
@@ -29,7 +39,7 @@ const personRoutes = require('./routes/personRoutes')
 const MenuitemRoutes = require('./routes/MenuitemRoutes')
 
 //use the routes 
-app.use('/person' ,personRoutes)
+app.use('/person' , localAuthMiddleware ,personRoutes)
 app.use('/Menu' ,MenuitemRoutes)
 
 
